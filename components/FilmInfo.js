@@ -6,24 +6,44 @@ const FilmInfo = ({ film }) => {
   return (
     <section className="flex flex-row justify-start mt-4 md:mt-8">
       <div className="relative hidden md:block max-h-[350px] max-w-[235px] sm:min-w-[350px] sm:min-h-[525px]">
-        <Image
-          src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
-          layout="fill"
-          alt=""
-          className="absolute"
-          priority={true}
-        />
+        {film.poster_path !== null ? (
+          <Image
+            src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
+            layout="fill"
+            alt=""
+            className="absolute"
+            priority={true}
+          />
+        ) : (
+          <Image
+            src="/no-poster.jpg"
+            layout="fill"
+            alt=""
+            className="absolute"
+            priority={true}
+          />
+        )}
       </div>
       <div className="flex flex-col px-2">
         <div className="flex my-6">
           <div className="relative min-h-[145px] min-w-[90px] md:hidden">
-            <Image
-              src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
-              layout="fill"
-              alt=""
-              className="absolute"
-              priority={true}
-            />
+            {film.poster_path !== null ? (
+              <Image
+                src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
+                layout="fill"
+                alt=""
+                className="absolute"
+                priority={true}
+              />
+            ) : (
+              <Image
+                src="/no-poster.jpg"
+                layout="fill"
+                alt=""
+                className="absolute"
+                priority={true}
+              />
+            )}
           </div>
           <h2 className="text-4xl sm:text-6xl font-semibold ml-2 sm:ml-0">
             {film.original_title}

@@ -30,12 +30,12 @@ const FilmPage = ({ film, cast }) => {
   console.log(film);
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col space-y-8 bg-black">
+    <main className="relative w-full min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)]  flex flex-col space-y-8 bg-black">
       <div className="xl:min-w-[1600px] max-w-[1600px] lg:p-24 mx-auto  bg-[#181818] md:rounded-lg sm:mt-4 text-[#f7f7f7]">
         <FilmInfo film={film} />
         <CastInfo cast={cast} />
       </div>
-    </div>
+    </main>
   );
 };
 

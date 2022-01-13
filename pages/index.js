@@ -24,11 +24,11 @@ export default function Home({ query }) {
 
   console.log(trending);
   return (
-    <div className="bg-black">
-      <div className="text-4xl font-semibold max-w-[1600px] mx-auto text-white my-4 pl-4 lg:pl-8">
+    <main className="bg-black">
+      <section className="text-4xl font-semibold max-w-[1600px] mx-auto text-white my-4 pl-4 lg:pl-8">
         <h3>Trending</h3>
-      </div>
+      </section>
       <Trending trending={trending} setTrending={setTrending} media={"all"} />
-    </div>
+    </main>
   );
 }

@@ -91,9 +91,11 @@ const SearchBar = () => {
         </form>
       </div>
       <Transition
-        className={`absolute md:hidden flex justify-center items-center w-[100%] h-full top-0 left-0 z-20 bg-gray-800`}
+        as="form"
+        onSubmit={handleSearch}
+        className={`absolute md:hidden flex justify-center items-center w-[100%] h-full top-0 left-0 z-20 bg-zinc-800`}
         show={showMobileSearch}
-        enter="transition duration-200 ease-out "
+        enter="transition duration-200 ease-out"
         enterFrom="transform w-0 opacity-0 "
         enterTo="transform w-full opacity-100 "
         leave="transition duration-200 ease-out"
@@ -101,8 +103,9 @@ const SearchBar = () => {
         leaveTo="transform w-0 opacity-0 "
       >
         <input
-          className="relative rounded w-full h-[60%] bg-gray-900 mx-2 focus:outline-none"
+          className="relative rounded w-full h-[60%] bg-neutral-900 mx-2 focus:outline-none px-2"
           onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search for a movie or tv show"
           value={search}
           onFocus={displaySearchResults}
           onBlur={() => setShowSearchResults(false)}
@@ -116,6 +119,7 @@ const SearchBar = () => {
           handleClick={handleClick}
           showSearchResults={showSearchResults}
         />
+        <button type="submit" hidden></button>
       </Transition>
       <SearchIcon
         className="ml-auto h-6 pr-4 md:hidden"

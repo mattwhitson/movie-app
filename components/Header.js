@@ -7,7 +7,7 @@ const Header = () => {
   const router = useRouter();
 
   return (
-    <div className="relative bg-[#101010] items-center h-16 sm:h-20 justify-center">
+    <header className="relative bg-[#101010] items-center h-16 sm:h-20 justify-center">
       <nav className="w-full lg:max-w-[1600px] h-full mx-auto flex flex-coljustify-center items-center text-white mr-auto">
         <Link href={"/"} passHref>
           <div className="flex ml-2 sm:ml-12">
@@ -38,7 +38,7 @@ const Header = () => {
         </Link>
         <SearchBar />
       </nav>
-    </div>
+    </header>
   );
 };
 

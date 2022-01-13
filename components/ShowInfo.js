@@ -5,24 +5,44 @@ const ShowInfo = ({ show }) => {
   return (
     <section className="flex flex-row justify-start mt-4 md:mt-8">
       <div className="relative hidden md:block min-h-[525px] sm:min-w-[350px]">
-        <Image
-          src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
-          layout="fill"
-          alt=""
-          className="absolute"
-          priority={true}
-        />
+        {show.poster_path !== null ? (
+          <Image
+            src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
+            layout="fill"
+            alt=""
+            className="absolute"
+            priority={true}
+          />
+        ) : (
+          <Image
+            src="/no-poster.jpg"
+            layout="fill"
+            alt=""
+            className="absolute"
+            priority={true}
+          />
+        )}
       </div>
       <div className="flex flex-col px-2">
         <div className="flex my-6">
           <div className="relative min-h-[145px] min-w-[90px] md:hidden">
-            <Image
-              src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
-              layout="fill"
-              alt=""
-              className="absolute"
-              priority={true}
-            />
+            {show.poster_path !== null ? (
+              <Image
+                src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
+                layout="fill"
+                alt=""
+                className="absolute"
+                priority={true}
+              />
+            ) : (
+              <Image
+                src="/no-poster.jpg"
+                layout="fill"
+                alt=""
+                className="absolute"
+                priority={true}
+              />
+            )}
           </div>
           <h2 className="text-4xl sm:text-6xl font-semibold ml-2 sm:ml-0">
             {show.original_name}

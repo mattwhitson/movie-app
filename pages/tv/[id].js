@@ -26,12 +26,12 @@ export const getServerSideProps = async (context) => {
 const TVSeries = ({ show, cast }) => {
   console.log(show, cast);
   return (
-    <div className="relative w-full min-h-screen flex flex-col space-y-8 bg-black">
-      <div className="xl:min-w-[1600px] max-w-[1600px] lg:p-24 mx-auto sm:h-[calc(100vh-80px)] bg-[#181818] md:rounded-lg sm:mt-4 text-[#f7f7f7]">
+    <main className="relative w-full min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col space-y-8 bg-black">
+      <div className="xl:min-w-[1600px] max-w-[1600px] lg:p-24 mx-auto bg-[#181818] md:rounded-lg sm:mt-4 text-[#f7f7f7]">
         <ShowInfo show={show} />
         <CastInfo cast={cast} />
       </div>
-    </div>
+    </main>
   );
 };
 

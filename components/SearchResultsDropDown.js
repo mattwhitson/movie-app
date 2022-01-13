@@ -7,7 +7,7 @@ const SearchResultsDropDown = ({
 }) => {
   return (
     <Transition
-      className={`absolute p-2 w-full top-16 md:top-12 z-20 rounded bg-gray-800 space-y-2`}
+      className={`absolute p-2 w-full top-14 md:top-12 z-10 rounded bg-zinc-800 space-y-2`}
       show={showSearchResults}
       enter="transition duration-200 ease-out "
       enterFrom="transform scale-40 opacity-0 "
