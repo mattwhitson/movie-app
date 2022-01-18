@@ -56,7 +56,7 @@ const ShowInfo = ({ show }) => {
             <span className="text-xl">{show.vote_average} / 10</span>
           </div>
           <div className="flex space-x-4 font-semibold">
-            <p className="p-1">{`${show.first_air_date.split("-")[0]} - ${
+            <p className="p-1">{`${show.first_air_date?.split("-")[0]} - ${
               show.status !== "Ended"
                 ? "Present"
                 : show.last_air_date.split("-")[0]

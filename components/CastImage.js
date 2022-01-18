@@ -14,7 +14,6 @@ const CastImage = ({ actor }) => {
     }
   }, [error]);
 
-  console.log(error);
   return (
     <div className="relative min-h-[96px] min-w-[96px]">
       <Image

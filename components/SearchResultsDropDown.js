@@ -28,15 +28,9 @@ const SearchResultsDropDown = ({
                   ({result.release_date.split("-")[0]}) {result.original_title}
                 </a>
               ) : (
-                <>
-                  {result.media_type !== "person" && (
-                    <a
-                      onClick={() => handleClick(result.id, result.media_type)}
-                    >
-                      ({result.first_air_date.split("-")[0]}) {result.name}
-                    </a>
-                  )}
-                </>
+                <a onClick={() => handleClick(result.id, result.media_type)}>
+                  ({result.first_air_date.split("-")[0]}) {result.name}
+                </a>
               )}
             </div>
           ))}

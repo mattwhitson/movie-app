@@ -6,7 +6,7 @@ import Trending from "../components/Trending";
 
 export const getServerSideProps = async () => {
   const filmResponse = await axios.get(
-    "https://api.themoviedb.org/3/trending/all/day?api_key=09874fd47ec2d76fc70fb0b5b6605595"
+    `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
   );
 
   const query = filmResponse.data.results;
@@ -22,7 +22,6 @@ export default function Home({ query }) {
   const [trending, setTrending] = useState(query);
   const [searchResults, setSearchResults] = useState(null);
 
-  console.log(trending);
   return (
     <main className="bg-black">
       <section className="text-4xl font-semibold max-w-[1600px] mx-auto text-white my-4 pl-4 lg:pl-8">

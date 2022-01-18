@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export const getServerSideProps = async (context) => {
   const film = context.params.film;
   const searchResults = await axios.get(
-    `https://api.themoviedb.org/3/search/multi?api_key=09874fd47ec2d76fc70fb0b5b6605595&query=${film}`
+    `https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_API_KEY}&query=${film}`
   );
 
   const query = searchResults.data.results;
@@ -25,9 +25,9 @@ const Search = ({ query }) => {
 
   useEffect(() => {
     setSearchResults(query);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
-  console.log(searchResults);
   return (
     <main className="w-full min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] bg-black text-white pt-5">
       <section className="max-w-6xl mx-auto space-y-5">

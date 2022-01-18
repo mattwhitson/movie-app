@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { debounce } from "lodash";
 import { PlusIcon, SearchIcon } from "@heroicons/react/outline";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import SearchResultsDropDown from "./SearchResultsDropDown";
+import filmService from "../services/filmService";
 
 const SearchBar = () => {
   const router = useRouter();
@@ -13,6 +13,10 @@ const SearchBar = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
+
+  const noPeople = searchResults.filter(
+    (result) => result.media_type !== "person"
+  );
 
   //return statment cleans up debounce to ensure it doesn't execute after routing to another page
   useEffect(() => {
@@ -41,13 +45,17 @@ const SearchBar = () => {
 
   const debouncedSearch = useMemo(
     () =>
-      debounce((search) => {
-        console.log(searchResults);
-        return axios
-          .get(
-            `https://api.themoviedb.org/3/search/multi?api_key=09874fd47ec2d76fc70fb0b5b6605595&query=${search}`
-          )
-          .then((res) => setSearchResults(res.data.results));
+      debounce(async (search) => {
+        searchResults;
+        return await filmService
+          .getSearchResults(search)
+          .then((res) =>
+            setSearchResults(
+              res.data.results.filter(
+                (result) => result.media_type !== "person"
+              )
+            )
+          );
       }, 1000),
     [searchResults]
   );

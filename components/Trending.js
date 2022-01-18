@@ -2,19 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useFilmSearch } from "../useFilmSearch";
+import { useFilmSearch } from "../hooks/useFilmSearch";
 import LoadingIcon from "./LoadingIcon";
 
 const Trending = ({ trending, setTrending, media }) => {
   const [pageNumber, setPageNumber] = useState(1);
   const { ref, inView, entry } = useInView();
-  const url = `https://api.themoviedb.org/3/trending/${media}/day?api_key=09874fd47ec2d76fc70fb0b5b6605595&page=`;
 
   const { loading, error } = useFilmSearch(
     pageNumber,
     trending,
     setTrending,
-    url
+    media
   );
 
   //sets next page to be queried from API with the useFilmSearch hook

@@ -7,10 +7,10 @@ export const getServerSideProps = async (context) => {
   const filmId = context.params.id;
 
   const getFilm = await axios.get(
-    `https://api.themoviedb.org/3/movie/${filmId}?api_key=09874fd47ec2d76fc70fb0b5b6605595`
+    `https://api.themoviedb.org/3/movie/${filmId}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
   );
   const getCast = await axios.get(
-    `https://api.themoviedb.org/3/movie/${filmId}/credits?api_key=09874fd47ec2d76fc70fb0b5b6605595&language=en-US`
+    `https://api.themoviedb.org/3/movie/${filmId}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`
   );
 
   const film = getFilm.data;
@@ -26,8 +26,6 @@ export const getServerSideProps = async (context) => {
 
 const FilmPage = ({ film, cast }) => {
   const { ref, inView, entry } = useInView();
-
-  console.log(film);
 
   return (
     <main className="relative w-full min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)]  flex flex-col space-y-8 bg-black">
